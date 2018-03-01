@@ -1,0 +1,530 @@
+//zadTestowe
+
+#include <iostream>
+
+using namespace std;
+
+class klasaTestowa
+{
+public: //private:
+    int test;
+};
+
+int main()
+{
+    klasaTestowa t=klasaTestowa();
+    t.test=5;
+    return 0;
+}
+
+//zad 7.2.1 zmodyfikowane
+
+#include <iostream>
+
+using namespace std;
+
+ class trojkat{
+ public:
+     int a;
+     int b;
+     int c;
+ };
+
+ int f(class trojkat jeden)
+ {
+     return jeden.a+jeden.b+jeden.c;
+ }
+
+//zad 7.2.2 zmodyfikowane
+
+#include <iostream>
+
+ using namespace std;
+
+ class trojkat{
+ public:
+     int a;
+     int b;
+     int c;
+ };
+
+ void f(class trojkat jeden, class trojkat *dwa)
+ {
+     *dwa=jeden;
+ }
+
+ //kontynuacja zad testowego
+
+#include <iostream>
+//#include <cmath>
+
+using namespace std;
+
+
+        class klasaTestowa
+        {
+        public: //private:
+            int test;
+        };
+
+        int main()
+        {
+            klasaTestowa t=klasaTestowa();
+            t.test=5;
+            int x, y;
+            cin>>x>>y;
+            cout<<"Test: "<<x, y<<endl;
+            return 0;
+        }
+
+//zad 2 z tablicy, dużo nowych inf.!!!
+        #include <iostream>
+
+        using namespace std;
+
+        class Point
+        {
+        private:
+            float x,y;
+        public:
+            void setX(float x)
+            {
+                this->x=x; //chcemy sie odniesc do elementu ktory znajduje sie w obrebie danej klasy, w tym przypadku ustalic "x" za pomocą funkcji "this" i operatora "->".
+            }
+            float getX() //funkcja za pomoca ktorej jest mozliwe wywolanie danych, w tym przypadku "x".
+            {
+                return x;
+            }
+
+            void setY(float y)
+            {
+                this->y=y;
+            }
+            float getY()
+            {
+                return y;
+            }
+        };
+
+        int main()
+        {
+            Point p=Point(); //zadeklarowanie punktu o nazwie "p" do klasy o nazwie "Point".
+            p.setX(5.5);    //wczytuje zmienną "x=5.5" poprzez użycie funkcji.
+            cout<<p.getX()<<endl; //wywoluje zmienną "x" na ekran.
+            p.setY(6.7);
+            cout<<p.getY()<<endl;
+            return 0;
+        }
+
+//zadanie z move 2a
+#include <iostream>
+
+using namespace std;
+
+class Point
+{
+private:
+    float x,y;
+public:
+    void setX(float x)
+    {
+        this->x=x;
+    }
+
+
+    void setY(float y)
+    {
+        this->y=y;
+    }
+
+    void move(float x, float y)
+    {
+        this->x+=x; //SŁOWO KLUCZ "THIS->"
+        this->y+=y;
+    }
+    float getX()
+    {
+        return x;
+    }
+    float getY()
+    {
+         return y;
+    }
+
+
+};
+
+int main()
+{
+    Point p=Point();
+    p.setX(5.5);
+    p.setY(6.7);
+    p.move(1.0, 2.0); //Jak widac, chyba, x+=x to nie musi znaczyc 5.5+5.5.
+    cout<<p.getX()<<endl;
+    cout<<p.getY()<<endl;
+    return 0;
+}
+
+//zadanie z move 2b
+#include <iostream>
+
+using namespace std;
+
+class Point
+{
+private:
+    float x,y;
+public:
+    void setX(float x)
+    {
+        this->x=x;
+    }
+
+
+    void setY(float y)
+    {
+        this->y=y;
+    }
+    float getX()
+    {
+        return x;
+    }
+    float getY()
+    {
+         return y;
+    }
+    void move(Point p)
+    {
+        x+=p.getX();
+        y+=p.getY();
+    }
+
+
+};
+
+int main()
+{
+    Point w=Point();
+    w.setX(1.0);
+    w.setY(2.0);
+    Point p=Point();
+    p.setX(5.5);
+    p.setY(6.7);
+    p.move(w);
+    cout<<p.getX()<<endl;
+    cout<<p.getY()<<endl;
+    return 0;
+}
+
+//konstruktor
+
+#include <iostream>
+
+using namespace std;
+
+class Point
+{
+private:
+    float x,y;
+public:
+    Point(float x, float y) //konstruktor nr1 klasy Point, funkcja, wywola sie jezeli w mainie wprowadzimy wartosci
+    {
+        this->x=x;
+        this->y=y;
+    }
+
+    Point(float x) //konstruktor nr2
+    {
+        this->x=x;
+        y=0.0;
+    }
+
+    float getX()
+    {
+        return x;
+    }
+    float getY()
+    {
+         return y;
+    }
+    void move(Point p)
+    {
+        x+=p.getX();
+        y+=p.getY();
+    }
+
+
+};
+
+int main()
+{
+    Point w=Point(1.0, 2.0); //o tutaj
+    Point p=Point(5.5, 8.0); //jakby bylo Point p=Point(2.0), że bez y to wtedy wywola sie konstruktor nr 2
+    p.move(w);
+    cout<<p.getX()<<endl;
+    cout<<p.getY()<<endl;
+    return 0;
+}
+
+//zad 4 robione samemu
+#include <iostream>
+
+using namespace std;
+
+class Point
+{
+private:
+    float x, y;
+public:
+    Point(float x, float y)
+    {
+        this->x=x;
+        this->y=y;
+    }
+
+
+    float getX()
+    {
+        return x;
+    }
+    float getY()
+    {
+         return y;
+    }
+    void distance(Point p, Point w)
+    {
+        float a, b;
+        float tab[2];
+        if(p.x<w.x)
+        a=(p.x-w.x)*(-1);
+        else
+        a=(p.x-w.x);
+        if(p.y<w.y)
+        b=(p.y-w.y)*(-1);
+        else
+        b=(p.y-w.y);
+        tab[0]=a;
+        tab[1]=b;
+        cout<<"Odleglosc miedzy punktami wynosi: "<<endl;
+        for(int i=0; i<2; i++)
+        {
+            cout<<tab[i];
+            if(i<1)
+                cout<<", ";
+        }
+    }
+};
+
+int main()
+{
+    Point w=Point(6.5, 7.0);
+    Point p=Point(5.5, 8.0);
+    cout<<distance(p,w)<<endl;
+
+    return 0;
+}
+
+
+//zad 4 z tablicy
+
+#include <iostream>
+
+using namespace std;
+
+class Point
+{
+private:
+    float x, y;
+public:
+    Point(float x, float y)
+    {
+        this->x=x;
+        this->y=y;
+    }
+
+
+    float getX()
+    {
+        return x;
+    }
+    float getY()
+    {
+         return y;
+    }
+    float distance(Point p, Point w)
+    {
+        float a, b;
+        a=pow(w.getX()-p.getX());
+        b=pow(w.getY()-p.getY());
+        return sqrt(a+b);
+    }
+};
+
+int main()
+{
+    Point w=Point(6.5, 7.0);
+    Point p=Point(5.5, 8.0);
+    cout<<distance(p,w);
+
+    return 0;
+}
+
+//??? pliki naglowkowe i zrodlowe ???
+#ifndef TEST_H //jesli nie jest zdefiniowane to 
+#define TEST_H //definiuje
+class test
+{
+private:
+    int x;
+public:
+    test(float x)
+    float getX();
+};
+
+#endif //TEST_H
+
+#include "test.h" //includuje naglowek
+
+test::test(float x)
+{
+    this->x=x;
+}
+
+float test::getX()
+{
+    return x;
+}
+
+#include <iostream>
+#include "test.h"
+
+using namespace std;
+
+class Point
+{
+private:
+    float x, y;
+public:
+    Point(float x, float y)
+    {
+        this->x=x;
+        this->y=y;
+    }
+
+
+    float getX()
+    {
+        return x;
+    }
+    float getY()
+    {
+         return y;
+    }
+    float distance(Point p, Point w)
+    {
+        float a, b;
+        a=pow(w.getX()-p.getX());
+        b=pow(w.getY()-p.getY());
+        return sqrt(a+b);
+    }
+};
+
+int main()
+{
+    test t=test(2.0);
+    cout<<t.test<<endl; //??? nie wiem czy dobrze, bo za szybko, raczej nie
+    Point w=Point(6.5, 7.0);
+    Point p=Point(5.5, 8.0);
+    cout<<distance(p,w);
+
+    return 0;
+}
+
+//???v2 zad5 http://liza.umcs.lublin.pl/~kdmitruk/oop/#1 niezrobione bo nie umiem i nie rozumiem, zrobię pozniej
+
+#include <iostream>
+#include <cmath>
+#include "point.h"
+
+//zad6
+
+#include <iostream>
+#include <cmath>
+#include "point.h"
+
+class triangle
+{
+private:
+    float a,b,c;
+public:
+    Point(float a, float b, float c)
+    {
+        this->a=a;
+        this->b=b;
+        this->c=c;
+    }
+
+    float perimeter(triangle troj1)
+    {
+        flaot p=troj1.a+troj1.b+troj1.c;
+        return p;
+    }
+    float area(triangle troj1)
+    {
+        
+        return sqrt((1/2)*p*((1/2)*p-a)*((1/2)*p-b)*((1/2)*p-c));
+    }
+};
+
+int main()
+{
+    triangle troj1=triangle(3.0,4.0,5.0);
+    triangle troj2=triangle(5.5,4.4,7.0);
+    triangle troj3=triangle(1.5,1.6,1.7);
+    cout<<perimeter(troj1)<<endl;
+    cout<<area(troj1)<<endl;
+    cout<<perimeter(troj2)<<endl;
+    cout<<area(troj2)<<endl;
+    cout<<perimeter(troj3)<<endl;
+    cout<<area(troj3)<<endl;
+    return 0;
+}
+    
+#ifndef TRIANGLE //jesli nie jest zdefiniowane to 
+#define TRIANGLE //definiuje
+class triangle
+{
+private:
+    float a,b,c;
+public:
+    float perimeter()
+    {
+        flaot p=troj1.a+troj1.b+troj1.c;
+        return p;
+    }
+    float area()
+    {
+        
+        return sqrt((1/2)*p*((1/2)*p-a)*((1/2)*p-b)*((1/2)*p-c));
+    }
+};
+};
+
+#endif //TTRIANGLE
+
+#include "triangle" //includuje naglowek
+
+triangle::triangle(float a,b,c)
+{
+    this->a=a;
+    this->b=b;
+    this->c=c;
+}
+
+
+
+
+
+
+
+
