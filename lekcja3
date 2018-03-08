@@ -1,0 +1,203 @@
+/*#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+};
+
+int main()
+{
+    //char napis[6];
+    string n="Hello ";
+    string n2="world";
+    string n3="! :)";
+    string n4=n+n2+n3; //można dodawać napisy;
+    cout<<n4<<endl;
+    cout<<n4.size()<<endl; //.size() wyswietla dlugosc napisu;
+    //n2.clear() usuwa stringa;
+    //n2.c_str() zamienia na tablice charow;
+
+
+    return 0;
+}
+*/
+
+//zad1
+/*
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+class String
+{
+private:
+    string napis;
+public:
+    String(string n)
+    {
+        napis=n;
+    }
+    void show()
+    {
+        transform(napis.begin(), napis.end(), napis.begin(),::tolower); //zamienia duze litery na male, potrzebna biblioteka <algorithm>
+        char min='z';
+        char max='a';
+        for(int i=0;i<=napis.size()-1;i++)
+        {
+            if(napis[i]>=max)
+                max=napis[i];
+            if(napis[i]<=min)
+                min=napis[i];
+        }
+        cout<<min<<endl;
+        cout<<max<<endl;
+    }
+
+};
+
+int main()
+{
+    String n1("przyKlad");
+
+    n1.show();
+
+
+    return 0;
+}
+*/
+//zad2 (niedokonczone)
+/*
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+
+{
+    string n1,n2,n3;
+    cout<<"podaj ciag wyrazow odzielonych spacja: ";
+    getline(cin, n1);
+    cout<<"podaj 2 pojedyncze wyrazy: ";
+    cin>>n2;
+    cin>>n3;
+    for(int i=0; i<=n1.size()-1; i++)
+    {
+
+        for(int j=0; j<=n2.size()-1; j++)
+        {
+            while(n1[i]!=' ')
+            {
+            if(n1[i]=n2[j])
+            {
+
+            }
+            j++
+            i++
+            }
+        }
+
+    }
+
+} */
+//tablica1, zawieranie sie wyrazow, wazne!!
+/*
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+
+{
+    string napis,napis2, napis3;
+    cin>>napis;
+    cin>>napis2;
+    string::iterator it2=napis2.begin();
+    for(string::iterator it = napis.begin(); it != napis.end(); it++)
+         {
+            if(it2==napis2.end())
+            {
+                cout<<"n1 zawiera sie w n2"<<endl;
+                return 0;
+            }
+            else if(*it=*it2)
+            it2++;
+            else
+                it2=napis2.begin();
+        }
+    cout<<"n1 nie zawiera sie w n2"<<endl;
+
+
+
+
+    return 0;
+}
+*/
+//tablica2, a) zapisywanie do pliku, b) odczytywanie
+/*
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main()
+
+{
+    //a)
+    ofstream plik;
+    plik.open("test.txt");
+    plik<<"Test zapisu"<<endl;
+    plik.close();
+    //b)
+    ifstream plik2;
+    plik2.open("test.txt");
+    std::ifstream filein("test.txt");
+        for (std::string line; std::getline(filein, line); )
+        {
+            std::cout << line << std::endl;
+        }
+    plik2.close();
+    return 0;
+}
+*/
+
+//zad4
+
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+    string napis;
+    cin>>napis;
+    ofstream plik;
+    plik.open("test1.txt");
+    plik<<napis<<endl;
+    plik.close();
+    ifstream plik2;
+    plik2.open("test1.txt");
+    std::ifstream filein("test1.txt");
+        for (std::string line; std::getline(filein, line); )
+        {
+            std::cout << line << std::endl;
+        }
+    for(int i=0; i<=napis.size()-1; i++)
+    {
+        int licznik=1;
+        if(napis[i]==' ')
+        {
+            licznik+=1;
+        }
+        cout<<licznik<<endl;;
+    }
+    plik2.close();
+    return 0;
+}
