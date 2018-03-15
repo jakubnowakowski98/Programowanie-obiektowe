@@ -1,0 +1,221 @@
+/*
+//zad1
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class User
+{
+private:
+    string login;
+    string haslo;
+public:
+    User(string a, string b)
+    {
+        login=a;
+        haslo=b;
+    }
+    void authorize()
+    {
+        string c, d;
+        cin>>c;
+        cin>>d;
+        if(c==login && d==haslo)
+        cout<<"poprawne dane"<<endl;
+        else
+        cout<<"Zly login lub haslo"<<endl;
+    }
+};
+
+int main()
+{
+    User u = User("user", "password");
+    u.authorize();
+    return 0;
+}
+*/
+
+//zad tablica
+/*
+#include <iostream>
+
+using namespace std;
+class Ssak
+{
+public:
+    Ssak(){}
+    void jedz()
+    {
+        cout<<"jem"<<endl;
+    };
+};
+
+class Pies : public Ssak
+{
+public:
+    Pies(){}
+    void szczekaj()
+    {
+        cout<<"szczekam!"<<endl;
+    };
+};
+
+
+int main()
+{
+    Pies p = Pies();
+    p.szczekaj();
+    p.jedz();
+    return 0;
+}
+*/
+/*
+//zad2
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class User
+{
+protected:
+    string login;
+    string haslo;
+public:
+    User(string a, string b)
+    {
+        login=a;
+        haslo=b;
+    }
+
+    void authorize()
+    {
+        string c, d;
+        cin>>c;
+        cin>>d;
+        if(c==login && d==haslo)
+        cout<<"poprawne dane"<<endl;
+        else
+        cout<<"Zly login lub haslo"<<endl;
+    }
+};
+
+
+class Student : public User
+{
+private:
+    int semestr;
+public:
+    Student(int g) : User("login", "password"), semestr(g)
+    {
+    }
+
+    void a()
+    {
+        cout<<"Semestr nr: "<<semestr<<endl;
+    }
+};
+
+int main()
+{
+    Student s = Student(2);
+    s.authorize();
+    s.a();
+    return 0;
+}
+*/
+/*
+//zad3
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Subject
+{
+private:
+    string nazwa;
+    string tab[100];
+    int max;
+public:
+    Subject(string a, int b)
+    {
+        nazwa=a;
+        max=b;
+    }
+    void addStudent()
+    {
+        for(int i=0; i<=100; i++)
+        {
+            tab[i]="JanKowalski";
+        if(i+1<=max)
+        cout<<i+1<<". "<<tab[i]<<", dopisales sie do listy na przedmiot: "<<nazwa<<endl;
+        else
+        cout<<i+1<<". "<<tab[i]<<", brak miejsc na przedmiot: "<<nazwa<<endl;
+        }
+    }
+};
+
+int main()
+{
+    Subject s=Subject("matematyka", 99);
+    s.addStudent();
+    return 0;
+}
+*/
+//zad4
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Subject
+{
+private:
+    string nazwa;
+    string tab[100];
+    int max;
+    int tab2[100];
+public:
+    Subject(string a, int b)
+    {
+        nazwa=a;
+        max=b;
+    }
+    void addStudent()
+    {
+
+        for(int i=0; i<=100; i++)
+        {
+            tab[i]="JanKowalski";
+            tab2[i]=i+1;
+        if(i+1<=max)
+        cout<<i+1<<". "<<tab[i]<<", dopisales sie do listy na przedmiot: "<<nazwa<<endl;
+        else
+        cout<<i+1<<". "<<tab[i]<<", brak miejsc na przedmiot: "<<nazwa<<endl;
+        }
+    }
+    void ind()
+    {
+        int nr;
+        cin>>nr;
+        for(int i=0; i<=max; i++)
+        {
+            if(nr==tab2[i] && nr<=max)
+                cout<<"true"<<endl;
+            else
+                cout<<"false"<<endl;
+        }
+    }
+};
+
+int main()
+{
+    Subject s=Subject("matematyka", 99);
+    s.addStudent();
+    s.ind();
+    return 0;
+}
+
+
