@@ -1,0 +1,258 @@
+//zad z tablicy
+/*#include <iostream>
+
+using namespace std;
+
+void funkcja(double *wskaznik)
+{
+    *wskaznik=7;
+}
+
+int main()
+{
+    double *liczba;
+    liczba=new double;
+    *liczba=5;
+    cout<<liczba<<" "<<*liczba<<endl;
+    funkcja(liczba);
+    cout<<liczba<<" "<<*liczba<<endl;
+    delete liczba;
+    cout<<liczba<<" "<<*liczba<<endl;
+    return 0;
+}*/
+//zad z tab
+/*
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Villager
+{
+private:
+    string name;
+    unsigned int wiek;
+    unsigned int max_wiek;
+    bool plec; //true m/false k
+public:
+
+
+    Villager(string n ,unsigned w, unsigned mw, bool p)
+
+    {
+        name=n;
+        wiek=w;
+        max_wiek=mw;
+        plec=p;
+    }
+
+    string getImie()
+    {
+        return name;
+    }
+};
+
+int main()
+{
+    Villager v1=Villager("Jan", 18, 98, 1);
+    v1.getImie();
+    return 0;
+}
+*/
+/*
+//zad1
+#include <iostream>
+#include <time.h>
+#include <cstdlib>
+#include <string>
+
+using namespace std;
+
+class Villager
+{
+private:
+    string name;
+    unsigned int wiek;
+    unsigned int max_wiek;
+    bool plec; //true m/false k operator logiczny
+public:
+    string tab[101];
+    Villager()
+    {
+        srand(time(NULL));
+        max_wiek =rand() % 101 ;
+        for(int i=0; i<=101; i++)
+        {
+            if(i%2==0 || i==0)
+            {
+            tab[i]="Andrzej";
+            name=tab[i];
+            }
+            else if(i%2==1)
+            {
+            tab[i]="Franek";
+            name=tab[i];
+            }
+        }
+        name=tab[rand() % 101];
+        cout<<"Utworzono nowy obiekt"<<endl;
+    }
+
+    Villager(string n ,unsigned w, unsigned mw, bool p)
+
+    {
+        name=n;
+        wiek=w;
+        max_wiek=mw;
+        plec=p;
+        cout<<"Utworzono nowy obiekt"<<endl;
+    }
+    ~Villager()
+    {
+        cout<<"Dane umierajacej osoby:"<<endl;
+        cout<<name<<endl;
+        cout<<wiek<<endl;
+    }
+
+    void show()
+    {
+        cout<<wiek<<endl;
+        cout<<max_wiek<<endl;
+        cout<<name<<endl;
+        cout<<plec<<endl;
+    }
+    void plus1()
+    {
+        wiek=wiek+1;
+        cout<<wiek<<endl;
+        if(wiek>=max_wiek)
+        {
+        delete this;
+        }
+    }
+
+};
+
+int main()
+{
+    Villager v1=Villager("Jan", 18, 19, true);
+    v1.show();
+    v1.plus1();
+    return 0;
+}*/
+
+//zad2
+#include <iostream>
+#include <time.h>
+#include <cstdlib>
+#include <string>
+
+using namespace std;
+
+class Villager
+{
+protected:
+    string name;
+    unsigned int wiek;
+    unsigned int max_wiek;
+    bool plec; //true m/false k operator logiczny
+public:
+    string tab[101];
+    Villager()
+    {
+        srand(time(NULL));
+        max_wiek =rand() % 101 ;
+        for(int i=0; i<=101; i++)
+        {
+            if(i%2==0 || i==0)
+            {
+            tab[i]="Andrzej";
+            name=tab[i];
+            plec=true;
+            }
+            else if(i%2==1)
+            {
+            tab[i]="Monika";
+            name=tab[i];
+            plec=false;
+            }
+        }
+        name=tab[rand() % 101];
+        cout<<"Utworzono nowy obiekt"<<endl;
+    }
+
+    Villager(string n="Marek" ,unsigned w=18, unsigned mw=100, bool p=true)
+
+    {
+        name=n;
+        wiek=w;
+        max_wiek=mw;
+        plec=p;
+        cout<<"Utworzono nowy obiekt"<<endl;
+    }
+    ~Villager()
+    {
+        cout<<"Dane umierajacej osoby:"<<endl;
+        cout<<name<<endl;
+        cout<<wiek<<endl;
+    }
+
+    void show()
+    {
+        cout<<wiek<<endl;
+        cout<<max_wiek<<endl;
+        cout<<name<<endl;
+        cout<<plec<<endl;
+    }
+    void plus1()
+    {
+        wiek=wiek+1;
+        cout<<wiek<<endl;
+        if(wiek>=max_wiek)
+        {
+        delete this;
+        }
+    }
+
+};
+
+//ponizej jest zle wiekszosc
+class Household :public Villager
+{
+private:
+    int max;
+    string *tab;
+public:
+    Household(int o=2, string *t)
+    {
+        max=o;
+        t=new string*[max];
+        tab=t;
+        for(int i=0; i<max; i++)
+        {
+            tab[i]=Villager();
+        }
+    }
+
+
+    void pl1()
+    {
+        wiek=wiek+1;
+    }
+
+    void show()
+    {
+        if((a1.plec=true && a1.wiek>=18 && a1.wiek<=40 && max>1) || (a1.plec=false && a1.wiek>=18 && a1.wiek<=40 && max>1))
+            if((a2.plec=false && a2.wiek>=18 && a2.wiek<=40) || (a2.plec=true && a2.wiek>=18 && a2.wiek<=40))
+            cout<<"W kolejnym roku urodzi się dziecko"<<endl;
+    }
+};
+int main()
+{
+    Villager a1=Villager();
+    Villager a2=Villager();
+    Household v1=Household(2, tab[2])
+    v1.show();
+    v1.pl1();
+    return 0;
+}
