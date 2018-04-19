@@ -1,0 +1,306 @@
+//tablica 1
+/*
+#include <iostream>
+
+using namespace std;
+
+class Testowa{
+private:
+    static int zmiennaStatyczna;
+    int zmienna;
+public:
+    static int metodaStatyczna()
+    {
+        cout<<zmiennaStatyczna<<endl;
+        cout<<"Metoda statyczna"<<endl;
+        return 3;
+    }
+
+    void metoda()
+    {
+        zmiennaStatyczna++;
+        cout<<zmiennaStatyczna<<endl;
+    }
+};
+
+int Testowa::zmiennaStatyczna=0;
+
+int main()
+{ 
+    Testowa t1;
+    Testowa t2;
+    t1.metoda();
+    t2.metoda();
+    t1.metoda();
+    t2.metoda();
+    Testowa::metodaStatyczna();
+    return 0;
+}
+*/
+//zad4
+/*
+#include <iostream>
+using namespace std;
+
+class Polygon{
+private:
+    float a,b,c;
+public:
+    static void triangle()
+    {
+        cout<<"    ."<<endl;
+        cout<<"   . ."<<endl;
+        cout<<"  . . ."<<endl;
+        cout<<" . . . ."<<endl;
+        cout<<". . . . ."<<endl;
+    }
+    Polygon(float d, float e, float f)
+    {
+        a=d;
+        b=e;
+        c=f;
+    }
+
+};
+
+int main()
+{
+    Polygon p1=Polygon(3.0,4.0,5.0);
+    Polygon::triangle();
+    return 0;
+}
+*/
+//tab 2
+/*
+#include <iostream>
+using namespace std;
+class Bazowa
+{
+public:
+    Bazowa()
+    {
+        cout<<"Konstruktor bazowa"<<endl;
+    }
+
+    void metoda()
+    {
+        cout<<"Metoda bazowa"<<endl;
+    }
+    virtual ~Bazowa()
+    {
+        cout<<"Destruktor bazowa"<<endl;
+    }
+};
+
+class Pochodna : public Bazowa
+{
+public:
+    Pochodna()
+    {
+        cout<<"Kontsruktor pochodna"<<endl;
+    }
+
+    void metoda()
+    {
+        cout<<"Metoda pochodna"<<endl;
+    }
+
+    ~Pochodna()
+    {
+                cout<<"Destruktor pochodna"<<endl;
+            }
+};
+
+int main()
+{
+    Bazowa *b=new Pochodna();
+    b->metoda();
+    return 0;
+}
+
+*/
+//zad 1
+/*
+#include <iostream>
+
+using namespace std;
+
+class Person
+{
+protected:
+    string name;
+public:
+    Person(string n)
+    {
+        name=n;
+    }
+
+    ~Person()
+    {
+
+    }
+
+    void ident()
+    {
+        cout<<name<<endl;
+    }
+};
+
+class Teacher //: public Person
+{
+private:
+    string title;
+public:
+    Teacher(string t)
+    {
+        title=t;
+    }
+
+    ~Teacher()
+    {
+
+    }
+
+    void ident()
+    {
+        cout<<title<<endl;
+    }
+
+};
+
+class Student
+{
+private:
+    int semestr;
+public:
+    Student(int s)
+    {
+        semestr=s;
+    }
+
+    ~Student()
+    {
+
+    }
+
+    void ident()
+    {
+        cout<<semestr<<endl;
+    }
+};
+
+int main()
+{
+    Person p= Person("Jacek");
+    Teacher t= Teacher("Magister");
+    Student s= Student(2);
+    p.ident();
+    t.ident();
+    s.ident();
+    return 0;
+}
+*/
+/*
+ zad2
+#include <iostream>
+using namespace std;
+class RegularPolyhedron
+{
+private:
+    int a;
+    float b;
+    float p;
+    float h;
+public:
+    RegularPolyhedron(int z=4, float x=2, float c=8)
+    {
+        a=z;
+        b=x;
+        h=c;
+        p=z*(1/2)*x*(c-(1/2)*x);
+    }
+    //((n-2)*180/n)
+    virtual void volume()=0;
+protected:
+    void pp()
+    {
+        cout<<p<<endl;;
+    }
+    void wys()
+    {
+        cout<<h<<endl;
+    }
+};
+
+int main()
+{
+    RegularPolyhedron *y=new RegularPolyhedron;
+    y->wys();
+    y->pp();
+    return 0;
+}
+*/
+//tab 3
+/*
+#include <iostream>
+using namespace std;
+class B
+{
+public:
+    virtual void metodax() {} //specjalny blad zeby zobaczyc czy dziala "overrride"
+
+};
+
+class P : public B
+{
+public:
+    virtual void metoda() override{}
+};
+
+int main()
+{
+    P a;
+    a.metoda();
+    return 0;
+}
+*/
+
+//tab 4
+#include <iostream>
+using namespace std;
+class B1
+{
+public:
+    void metoda()
+    {
+        cout<<"b1"<<endl;
+    }
+
+};
+
+class B2
+{
+public:
+    void metoda()
+    {
+        cout<<"b2"<<endl;
+    }
+};
+
+class P : public B1, public B2 //jesli jest to,
+{
+public:
+    void test()
+    {
+        B1::metoda(); //musi byc to tu
+        B2::metoda(); //musi byc to tu
+        cout<<"p"<<endl;
+    }
+};
+
+int main()
+{
+    P a;
+    a.test();
+    return 0;
+}
