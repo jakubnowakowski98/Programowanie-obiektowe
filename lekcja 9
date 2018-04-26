@@ -1,0 +1,211 @@
+//tab 1
+/*
+#include <iostream>
+#include <vector>
+#include <list>
+#include <set>
+#include <map>
+#include <algorithm>
+
+using namespace std;
+
+//[5,6,8], po pushbacku [5,6,8,5], push back dodaje na koniec
+
+int main()
+{
+    //kontenery
+    /*
+    vector <int> dane;
+    dane.push_back(5); //dodaje jedną daną z tyłu(5)
+    dane.push_back(6);
+    cout<<dane[0]<<" "<<dane[1]<<endl;
+    cout<<dane.size()<<endl;
+    dane.pop_back(); //usuwa ostatnią daną
+    cout<<dane.size()<<endl;
+    cout<<dane[0]<<endl;
+    return 0;
+    */
+    //lista
+    /*
+    list <int> daneL;
+    vector <int> daneV;
+    daneV.push_back(2);
+    daneL.push_front(2); //dodaje 1 daną z przodu(2)
+    return 0;
+    */
+    /*
+    set <string> dane;
+    dane.insert("testA"); //dodaje daną
+    dane.insert("testB");
+    dane.insert("testC");
+    set<string>::iterator result; //??
+    result = dane.find("testA"); //??
+    if(result == dane.end()) //jeśli jest ostatnim elementem
+        cout<<"nie istnieje"<<endl;
+    else
+        cout<<"istnieje"<<endl;
+        //NIE MOZNA UZYC cout<<dane[1]; !!!!!
+    return 0;
+    */
+    /*
+    //mapa to rozbudowany set
+    map <int, string> dane; //int, string, wiec nr int tablicy + nazwa danych w niej zawartych
+    dane[1]="test";
+    dane[15]="xyz";
+    dane[6]="sddgs";
+    cout<<dane[1]<<endl;
+    map <string, string> dana; //string, string wiec nazwa klucza tablicy i nazwa danych w niej zawartych
+    dana["k1"]="test"; // "k1"=klucz 1, moze byc dowolna nazwa
+    dana["k2"]="xyz";
+    dana["k3"]="sddgs";
+    cout<<dana["k2"]<<endl;
+    map<string, string>::iterator it; //??
+    it=dana.find("k6"); //??
+    if(it==dana.end())
+        cout<<"nie znalazlem"<<endl;
+    else
+        cout<<"znalazlem"<<endl;
+    return 0;
+    }
+    */
+/*
+#include <iostream>
+#include <vector>
+#include <list>
+#include <set>
+#include <map>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    /* //cos nie dziala, zle sortuje a jest jak na tablicy
+    vector <int> v;
+    v.push_back(5);
+    v.push_back(7);
+    v.push_back(3);
+    v.push_back(1);
+    sort(v.begin(),v.begin()+3); //potrzeba <algorithm>
+    for(int i=0; i<v.size(); i++)
+        cout<<v[i]<<endl;
+    return 0;
+
+
+    int  a,b;
+    a=10;
+    b=11;
+    swap(a,b); //zamienia, potrzeba <algorithm>
+    cout<<a<<endl;
+}
+    */
+
+//zad1
+/*
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Point
+{
+public:
+    float a;
+    float b;
+    Point(float c=0.0, float d=0.1)
+    {
+        a=c;
+        b=d;
+    }
+};
+
+int main()
+{
+    Point p1=Point(5.0, 0.1);
+    Point p2=Point(2.5, 3.7);
+    Point p3=Point();
+    vector <float> dane;
+    dane.push_back(p1.a);
+    dane.push_back(p1.b);
+    dane.push_back(p2.a);
+    dane.push_back(p2.b);
+    dane.push_back(p3.a);
+    dane.push_back(p3.b);
+    sort(dane.begin(),dane.begin+5); //cos nie dziala ;/
+    for(int i=0; i<dane.size(); i++)
+        cout<<dane[i]<<endl;
+    cout<<"___________"<<endl;
+    sort(dane.begin(),dane.begin+5);
+    for(int i=0; i<dane.size(); i++)
+       cout<<dane[i]<<endl;
+    return 0;
+} */
+
+//zad 2
+/*
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+    class Point
+    {
+    public:
+        float a;
+        float b;
+        Point(float c=0.0, float d=0.0)
+        {
+            a=c;
+            b=d;
+        }
+    };
+
+    void funkcja(float z, float x, float c, float v)
+    {
+        cout<<"Wektor przesuniecia: x, y: "<<endl;
+        cout<<x-z<<", "<<v-c<<endl;
+    }
+
+int main()
+{
+        Point p1=Point(0.0, 5.0);
+        Point p2=Point(2.5, 3.0);
+        //vector <Point> sprawdz(const vector<Point>& dane, Point p1, Point p2);
+        vector <float> dane;
+        dane.push_back(p1.a);
+        dane.push_back(p1.b);
+        dane.push_back(p2.a);
+        dane.push_back(p2.b);
+        funkcja(p1.a, p2.a, p1.b, p2.b);
+        return 0;
+}*/
+
+//zad3
+
+#include <iostream>
+#include <algorithm>
+#include <set>
+
+using namespace std;
+
+void funkcja(string &a, string &b)
+{
+    cout<<a<<endl;
+    cout<<b<<endl;
+}
+
+int main()
+{
+    set <string> dane;
+    dane.insert("testA");
+    dane.insert("testB");
+    set<string>::iterator it1;
+    it1 = dane.find("testA");
+    set<string>::iterator it2;
+    it2 = dane.find("testB");
+    funkcja(it1, it2);
+    return 0;
+}
+
