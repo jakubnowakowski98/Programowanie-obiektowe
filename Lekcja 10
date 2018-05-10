@@ -1,0 +1,185 @@
+//zad z tablicy
+/*
+#include <iostream>
+
+using namespace std;
+
+class CLiczba
+{
+private:
+    int liczba;
+public:
+    CLiczba(int liczba)
+    {
+        this->liczba=liczba;
+    }
+
+    void setLiczba(int liczba)
+    {
+        this->liczba=liczba;
+    }
+
+    int getLiczba()
+    {
+        return liczba;
+    }
+
+    int operator+(const int &other)
+    {
+        return liczba+other;
+    }
+};
+
+int main()
+{
+    CLiczba l1(5);
+    CLiczba l2(2);
+    cout<<"Suma: "<<l1+l2<<endl;
+    return 0;
+} */
+//zad1
+/*
+#include <iostream>
+
+using namespace std;
+
+class vec3
+{
+private:
+    float x,y,z;
+
+
+public:
+
+    float getX()
+    {
+        return x;
+    }
+    float getY()
+    {
+        return y;
+    }
+    float getZ()
+    {
+        return z;
+    }
+    vec3(float a, float b, float c)
+    {
+        x=a;
+        y=b;
+        z=c;
+    }
+
+    void operator +(const float &other)
+    {
+        cout<<x+other<<endl;
+        cout<<y+other<<endl;
+        cout<<z+other<<endl;
+    }
+    void operator -(const float &other)
+    {
+        cout<<x-other<<endl;
+        cout<<y-other<<endl;
+        cout<<z-other<<endl;
+    }
+    void operator +=(const float &other)
+    {
+        cout<<x+other<<endl;
+        cout<<y+other<<endl;
+        cout<<z+other<<endl;
+    }
+    void operator -=(const float &other)
+    {
+        cout<<x-other<<endl;
+        cout<<y-other<<endl;
+        cout<<z-other<<endl;
+    }
+    void operator *(const float &other)
+    {
+        if(other==other)
+        {
+            cout<<x*other<<endl;
+            cout<<y*other<<endl;
+            cout<<z*other<<endl;
+        }
+        else
+        {
+            cout<<x-other<<endl;
+            cout<<y-other<<endl;
+            cout<<z-other<<endl;
+        }
+    }
+    int operator *=(const float &other)
+    {
+        if(other==other)
+        {
+            cout<<x*other<<endl;
+            cout<<y*other<<endl;
+            cout<<z*other<<endl;
+        }
+        else
+        {
+            cout<<x*other<<endl;
+            cout<<y*other<<endl;
+            cout<<z*other<<endl;
+        }
+    }
+};
+
+int main()
+{
+    vec3 v1=vec3(5.0, 7.0, 6.5);
+    vec3 v2=vec3(2.0, 2.0, 2.0);
+
+    return 0;
+}
+*/
+//zad2
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Person
+{
+private:
+    string nazwa;
+    int wiek;
+
+public:
+    Person(string a, int w)
+    {
+        nazwa=a;
+        wiek=w;
+    }
+
+    int operator <(const int &other)
+    {
+        if(wiek==other)
+            return nazwa<other;
+        else
+        {
+            int operator <(const string &other)
+            {
+            return wiek<other;
+            }
+        }
+    }
+    int operator <<=(*Person)
+    {
+        
+    }
+    int operator [](int a)
+    {
+        return &Person.a;
+    }
+};
+
+int main()
+{
+    Person p1=Person("Marek", 35);
+    Person p2=Person("Lukasz", 5);
+    Person p3=Person("Alan", 6);
+    return 0;
+}
+
