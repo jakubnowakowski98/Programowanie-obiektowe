@@ -1,0 +1,120 @@
+//zad z tablicy
+/*
+#include <iostream>
+
+using namespace std;
+
+template <class Typ> //szablon
+Typ pomnoz(Typ l1, Typ l2)
+{
+    return l1*l2;
+}
+
+/*
+int pomnoz(int l1, int l2)
+{
+    cout<<"int"<<endl;
+    return l1*l2;
+}
+
+double pomnoz(double l1, double l2)
+{
+    cout<<"double"<<endl;
+    return l1*l2;
+} */
+/*
+int main()
+{
+    double a=5.5;
+    double b=6.4;
+    cout<<pomnoz<double>(a,b)<<endl;
+    return 0;
+}*/
+//zad1
+/*
+#include <iostream>
+
+using namespace std;
+
+template <class Typ>
+Typ funkcja(Typ *poczatek, Typ *koniec)
+{
+    /*int c=0;
+    for(int i=poczatek; i<=koniec; i++)
+    {
+        if(i<c)
+            c=i;
+    }
+    return &c;
+    sort(poczatek, koniec);
+    return &poczatek;
+}
+
+int main()
+{
+    unsigned int n;
+    int m=0;
+    cin>>n;
+    int tab[n];
+    for(int i=0;i<n;i++)
+    {
+        tab[i]=i;
+    }
+    cout<<funkcja<int>(&tab[m],&tab[n])<<endl;
+return 0;
+}
+*/
+//zad3
+/*
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+template <class Typ>
+Typ funkcja(Typ &a)
+{
+    return a;
+}
+
+int main()
+{
+    vector<double> v;
+    v.push_back(6.9);
+    cout<<funkcja<double>(v[0])<<endl;
+    return 0;
+}
+*/
+//zad4
+#include <iostream>
+
+using namespace std;
+
+template <class Typ>
+Typ Funkcja()
+{
+    private:
+    Typ tab[n];
+    Typ n;
+    public:
+    Funkcja(Typ m=50)
+    {
+        n=m;
+    }
+
+    int operator []()
+    {
+       for(int i=0;i<n;i++)
+       {
+           cout<<&tab[i];
+       }
+    }
+
+};
+
+int main()
+{
+    Funkcja f1=Funkcja(9);
+    f1.operator;
+    return 0;
+}
