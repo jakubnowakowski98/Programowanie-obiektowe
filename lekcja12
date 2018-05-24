@@ -1,0 +1,184 @@
+//zad1
+#include <iostream>
+//#include <vector>
+
+using namespace std;
+
+
+template <typename T>
+class CustomIterator
+{
+    T*element;
+public:
+    CustomIterator(T*element)
+    {
+        this->element=element;
+    }
+    CustomIterator& operator++()
+    {
+
+    }
+};
+
+
+#ifndef ARRAY_H
+#define ARRAY_H
+
+template <typename T>
+class Array {
+    unsigned int m_size;
+    T *arr;
+public:
+    Array(int size);
+    ~Array();
+    int size();
+    T get (int index);
+    T& operator[](int index);
+    class CustomIterator
+    {
+        Array *element;
+        int index;
+    public:
+        CustomIterator(Array *element)
+    {
+        this->element=element;
+            this->index=0;
+    }
+    CustomIterator& operator++()
+    {
+        if(index<element->size())
+        {
+            index++;
+        }
+    }
+    T operator *()
+    {
+        return element->get(index);
+    }
+    };
+};
+
+template <typename T>
+Array<T>::Array(int size) {
+    this->m_size=size;
+    this->arr=new T[size];
+}
+
+template <typename T>
+Array<T>::~Array() {
+    delete [] arr;
+}
+
+template <typename T>
+int Array<T>::size() {
+    return m_size;
+}
+
+template <typename T>
+T& Array<T>::operator[](int index) {
+    return arr[index];
+}
+
+
+#endif // ARRAY_H
+
+
+
+int main()
+{
+    Array<int>a(15);
+    CustomIterator<Array<int>> it(&a);
+
+    /*
+    vector<int> v1 = { 1, 2, 3, 4, 5 };
+
+        // Declaring an iterator
+        vector<int>::iterator i1;
+
+        for (i1 = v1.begin(); i1 != v1.end(); ++i1) {
+            // Assigning values to locations pointed by iterator
+            *i1 = 1;
+        }
+
+        for (i1 = v1.begin(); i1 != v1.end(); ++i1) {
+            // Accessing values at locations pointed by iterator
+            cout << (*i1) << " ";
+        }*/
+    return 0;
+}
+
+//zad2
+
+//h
+#include <iostream>
+template<class T>
+class Lista{
+public:
+    Lista(void);
+    ~Lista(void);
+ 
+    class Element{
+    public:
+        Element(T v){
+            value = v;
+            next = NULL;
+        }
+        T value;
+        Element* next;
+    };
+ 
+    Element* head;
+    Element* current;
+ 
+    void show(void);
+    void newElem(T);
+    void add(Element*);
+};
+
+//cpp
+template<class T> 
+Lista<T>::Lista(void){
+    head = NULL;
+}
+ 
+template<class T> 
+Lista<T>::~Lista(void){
+}
+ 
+template<class T>
+typename void Lista<T>::show(void){ 
+    Element* tmp = head;
+    while(tmp != NULL){
+        cout << tmp->value <<endl;
+        tmp = tmp->next;
+    }
+}
+ 
+template<class T>
+void Lista<T>::newElem(T value){
+     add(new Element(value));
+}
+ 
+template<class T>
+void Lista<T>::add(Element* element){
+    if (head == NULL){
+        head = element;
+    }
+    else{
+        current = head->next;
+        while (current != NULL)
+            current = current->next;
+        current = element;
+    }
+}
+
+//main
+int main(){
+    Lista<int> lista;
+ 
+    lista.newElem(10);
+    lista.newElem(100);
+    lista.show();
+ 
+        return 0;
+}
