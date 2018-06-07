@@ -1,0 +1,123 @@
+//zad z tablicy
+/*
+#include <iostream>
+
+using namespace std;
+
+class Klasa
+{
+private:
+    int mojaZmienna;
+public:
+    friend class ZaprzyjaznionaKlasa;
+
+    Klasa(int mojaZmienna)
+    {
+        this->mojaZmienna=mojaZmienna;
+    }
+    void showData()
+    {
+        cout<<this->mojaZmienna<<endl;
+    }
+    friend void ZaprzyjaznionaFunkcja(Klasa & k)
+    {
+
+    }
+};
+
+class ZaprzyjaznionaKlasa
+{
+public:
+    void modify(Klasa & k)
+    {
+        k.mojaZmienna=0;
+    }
+    void ZaprzyjaznionaFunkcja(Klasa & k)
+    {
+        k.mojaZmienna=11;
+    }
+};
+
+int main()
+{
+    Klasa k(5);
+    ZaprzyjaznionaKlasa zk;
+    k.showData();
+    zk.modify(k);
+    k.showData();
+    ZaprzyjaznionaFunkcja(k);
+    k.showData();
+    return 0;
+}
+*/
+//zad1
+/*
+#include <iostream>
+
+using namespace std;
+
+class Point
+{
+    double x,y;
+public:
+    friend istream &operator>>(istream &input, Point & p);
+    void showData()
+    {
+        cout<<x<<" "<<y<<endl;
+    }
+
+};
+
+istream &operator>>(istream & input, Point & p)
+{
+    return input>>p.x>>p.y;
+}
+
+int main()
+{
+    Point p;
+    cin>>p;
+    p.showData();
+    return 0;
+}
+*/
+//zad2
+#include <iostream>
+
+using namespace std;
+
+class Point
+{
+    double x,y;
+public:
+    friend istream &operator>>(istream &input, Point & p);
+    void showData()
+    {
+        cout<<x<<" "<<y<<endl;
+    }
+
+};
+
+istream &operator>>(istream & input, Point & p)
+{
+    return input>>p.x>>p.y;
+}
+
+
+class Points
+{
+private:
+    double *tab;
+public:
+    friend class Point;
+    
+};
+
+int main()
+{
+    Point p;
+    cin>>p;
+    p.showData();
+    return 0;
+}
+
