@@ -1,0 +1,165 @@
+/*tablica
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout<<[]()->int{return 1;}()<<endl; //lambda
+    return 0;
+}
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    cout<<[](int a, int b)->int{return a+b;}(1,2)<<endl; //tez lambda
+    return 0;
+}
+
+
+#include <iostream>
+
+using namespace std;
+
+class Klasa
+{
+public:
+    int count(int i)
+    {
+        return i*2;
+    }
+};
+
+int main()
+{
+    Klasa obiekt;
+    cout<<[]()->int{return 1;}()<<endl; //lambda
+    cout<<[](int a, int b)->int{return a+b;}(1,2)<<endl; //tez lambda
+    cout<<[&obiekt](int a)->int{return obiekt.count(a);}(8)<<endl; // i tu xD
+    auto lmbd=[](int a, int b)->int{return a+b;}; //lambdaa
+    cout<<lmbd(8,9)<<endl; //aa
+    cout<<lmbd(1,10)<<endl; //aa
+    return 0;
+}
+
+
+//zad1 na IFie
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Klasa
+{
+public:
+    int vec(int n)
+    {
+        vector<int> tab;
+        for( int i=0; i<n+2; ++i )
+        {
+           int element;
+           cin >> element;
+           tab.push_back(element);
+           cout<<"liczba podana: "<<tab[i]<<endl;
+           if(i>n-1)
+           {
+               tab[i]=0;
+           }
+           cout<<"liczba koncowa: "<<tab[i]<<endl;
+        }
+        return tab[n+1]+tab[n+2];
+
+    }
+
+};
+
+
+int main()
+{
+
+
+    Klasa obiekt;
+    cout<<[&obiekt](int a)->int{return obiekt.vec(a);}(3)<<endl;
+    return 0;
+}
+
+//zad 1 na replace_ifie
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+
+int main()
+{
+    vector<int> a;
+    for(int i=0; i<5; i++)
+    {
+        a.push_back(i+1);
+    }
+    int min=2, max=5;
+    replace_if(a.begin(),a.end(),[min,max](int value){return !(value>min&&value<max);},0);
+    for(int i:a)
+    cout<<i<<" "<<endl;
+    return 0;
+}
+
+*/
+//zad z tablicy
+#include <iostream>
+#include <functional>
+
+using namespace std;
+
+typedef function<int(int)> CallbackFunction;
+
+class Callee{
+    int i;
+public:
+    Callee(int i)
+    {
+        this->i=i;
+    }
+    int callbackFunction(int i)
+    {
+        cout<<"Callee input "<<endl;
+        return this->i*i;
+    }
+    void seti(int i)
+    {
+        this->i=i;
+    }
+};
+
+class Caller{
+   // typedef int(Callee::*callbackFunction)(int i);
+   // typedef int(*MethodPointer)(int);
+
+    CallbackFunction cbf;
+public:
+    void connectCallback(CallbackFunction cbf)
+    {
+        this->cbf=cbf;
+    }
+    void test(int i)
+    {
+        int result=(cbf)(i);
+        cout<<"Caller result: "<<result<<endl;
+    }
+
+};
+
+int main()
+{
+    Caller caller;
+    Callee callee(3);
+    caller.connectCallback([&callee](int i){return callee.callbackFunction(i);});
+    caller.test(2);
+    callee.seti(4);
+    caller.test(2);
+    return 0;
+}
+
