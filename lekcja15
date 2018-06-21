@@ -219,3 +219,184 @@ int main()
     return 0;
 }
 */
+
+//zad1
+
+#include <iostream>
+
+using namespace std;
+
+class Klasa
+{
+    static int nextId;
+    int id;
+public:
+    Klasa() : id(++nextId)
+    {
+        cout<<"Nowy obiekt o id: "<<id<<endl;
+    }
+    ~Klasa()
+    {
+        cout<<"Destruktor obiektu o id: "<<id<<endl;
+    }
+    int test(int arg)
+    {
+        cout<<"Funkcja testowa obiektu o id: "<<id<<endl;
+        return arg+4;
+    }
+    int getId()
+    {
+        return id;
+    }
+};
+
+int Klasa::nextId=0;
+
+class Klasa2
+{
+public:
+void operator &(Klasa &wsk)
+{
+    cout<<wsk.getId()<<endl;;
+}
+
+void operator()(Klasa *wsk)
+{
+    cout<<"Czyszczenie obiektu o id: "<<wsk->getId()<<endl;
+    delete wsk;
+}
+};
+
+int main()
+{
+    unique_ptr<Klasa> ptr(new Klasa);
+    cout<<ptr->test(5)<<endl;
+    cout<<"KONIEC"<<endl;
+    delete t1;
+    return 0;
+}
+
+
+
+//zad2
+#include <iostream>
+
+using namespace std;
+
+class Triangle
+{
+
+    float a,b,c;
+public:
+    Triangle(float i=3, float o=4, float p=5)
+    {
+        a=i;
+        b=o;
+        c=p;
+        cout<<"Nowy trojkat o krawedziach: "<<a<<", "<<b<<", "<<c<<endl;
+    }
+    ~Triangle()
+    {
+        cout<<"Destruktor"<<endl;
+    }
+
+    int test()
+    {
+        return a+b+c;
+    }
+};
+
+int main()
+{
+    unique_ptr<Triangle> ptr1(new Triangle);
+    cout<<ptr1->test()<<endl;
+    cout<<"KONIEC"<<endl;
+    return 0;
+}
+
+//zad4
+#include <iostream>
+
+using namespace std;
+
+class Triangle
+{
+
+    float a,b,c;
+public:
+    Triangle(float i=3, float o=4, float p=5)
+    {
+        a=i;
+        b=o;
+        c=p;
+        cout<<"Nowy trojkat o krawedziach: "<<a<<", "<<b<<", "<<c<<endl;
+    }
+    ~Triangle()
+    {
+        cout<<"Destruktor"<<endl;
+    }
+
+    int test()
+    {
+        return a+b+c;
+    }
+};
+
+int main()
+{
+    shared_ptr<Triangle> ptr(new Triangle);
+    cout<<ptr->test()<<endl;
+    cout<<"KONIEC"<<endl;
+    return 0;
+}
+*/
+
+//zad3
+
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+using namespace std;
+
+class WordBag
+{
+    vector <string> v;
+public:
+    WordBag()
+    {
+        v.push_back("ab");
+        v.push_back("dfbd");
+    }
+    ~WordBag()
+    {
+        cout<<"Destruktor"<<endl;
+    }
+
+    void nowy()
+    {
+        v.push_back("k");
+    }
+
+
+    void add(WordBag *wsk)
+    {
+        wsk->nowy();
+        v.push_back(wsk);
+    }
+
+    int take()
+    {
+        int b=v.size;
+        int a=rand()%b;
+        return *v[a];
+    }
+};
+
+int main()
+{
+    unique_ptr<WordBag> ptr(new WordBag);
+    cout<<ptr->add()<<endl;
+    cout<<ptr->take()<<endl;
+    cout<<"KONIEC"<<endl;
+    return 0;
+}
